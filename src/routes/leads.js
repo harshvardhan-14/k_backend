@@ -16,6 +16,7 @@ const upload = multer({
 // Upload CSV file with leads
 router.post('/upload', upload.single('leads'), async (req, res) => {
   try {
+    // Validate that a file is uploaded
     if (!req.file) {
       return res.status(400).json({
         error: 'No file uploaded',
@@ -57,6 +58,7 @@ router.post('/upload', upload.single('leads'), async (req, res) => {
     // Delete the uploaded file
     fs.unlinkSync(filePath);
     
+     // If no valid leads were found in the CSV
     if (leads.length === 0) {
       return res.status(400).json({
         error: 'No valid leads found',
@@ -82,7 +84,7 @@ router.post('/upload', upload.single('leads'), async (req, res) => {
   } catch (error) {
     console.error('Error uploading leads:', error);
     
-    // Clean up file
+    // Clean up file 
     if (req.file && req.file.path) {
       try {
         fs.unlinkSync(req.file.path);
