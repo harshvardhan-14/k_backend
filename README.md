@@ -32,8 +32,14 @@ This API helps you score leads (potential customers) by:
    ```
 
 4. **Test it works**
+
+**Base URL**
    ```bash
-   curl http://localhost:3000/health
+   curl https://k-backend-jz1s.onrender.com/
+   ```
+   **Health URL**
+   ```bash
+   curl https://k-backend-jz1s.onrender.com/health
    ```
 
 ## API Endpoints
@@ -54,7 +60,7 @@ This API helps you score leads (potential customers) by:
 
 ### Step 1: Save your product
 ```bash
-curl -X POST http://localhost:3000/api/offer \
+curl -X POST https://k-backend-jz1s.onrender.com/api/offer \
   -H "Content-Type: application/json" \
   -d '{
     "name": "AI Sales Tool",
@@ -86,7 +92,7 @@ Jane Smith,Marketing Manager,GrowthCo,B2B SaaS,New York,Marketing expert
 
 Then upload it:
 ```bash
-curl -X POST http://localhost:3000/api/leads/upload \
+curl -X POST https://k-backend-jz1s.onrender.com/api/leads/upload \
   -F "leads=@sample-leads.csv"
 ```
 
@@ -116,7 +122,7 @@ curl -X POST http://localhost:3000/api/leads/upload \
 
 ### Step 3: Score the leads
 ```bash
-curl -X POST http://localhost:3000/api/score
+curl -X POST https://k-backend-jz1s.onrender.com/api/score
 ```
 
 **Expected result:**
@@ -147,14 +153,15 @@ curl -X POST http://localhost:3000/api/score
 
 ### Step 4: Get results
 ```bash
-curl http://localhost:3000/api/results
+curl https://k-backend-jz1s.onrender.com/api/results
 ```
 
 **Expected result:** Same as step 3 but just the results part.
 
 ### Step 5: Export as CSV
 ```bash
-curl http://localhost:3000/api/results/export/csv -o results.csv
+curl curl https://k-backend-jz1s.onrender.com/api/results/export/csv -o results.csv
+
 ```
 
 **Expected result:** Downloads a CSV file with all the results.
@@ -200,7 +207,8 @@ docker-compose up
 ## Deployment
 
 
-- Render
+- Render (Current Deployment)
+Base URL: https://k-backend-jz1s.onrender.com
 
 Just make sure to set the `GEMINI_API_KEY` environment variable.
 
